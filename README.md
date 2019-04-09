@@ -1,21 +1,31 @@
 # MROBOT 
-SLAM using 2D lidar
-
-
-
+SLAM using 2D lidar 
 Usage
 
-1. 
+1. Matlab:
+	Step1:setenv('ROS_MASTER_URI','http://UBUNTU-IP:11311');
+		  setenv('ROS_IP','PC-IP');
+	Step2:rosinit
 
-2. 
+2. Ubuntu16.04(kinetic):
+	Step1:roscore
+	Step2:roslauch mrobot_laser_nav_gazebo.launch
+	
+	note:you need set ROS_MASTER_URI & ROS_HOSTNAME  both of MATLAB and UBUNTU
+
+3. ROS_CONTROL_APP
+![MATLAB_ROS_APP]()
 
 To Do
 
-1. 
-
-2. 
-
-3. 
+1. Mapping
+	![MAPPING]()
+2. AMCL_Localize
+	![AMCL]()
+3. Path_follow
+	![PRM]()
+4. ObstacleAvoidance
+	![VFH]()
 
 References 
 
