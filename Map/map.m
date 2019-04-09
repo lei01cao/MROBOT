@@ -1,16 +1,16 @@
 load('LaserScanData.mat'); 
 
-%´´½¨ robotics.LidarSLAM ²¢ÉèÖÃµØÍ¼·Ö±æÂÊºÍ×î´ó¼¤¹âÀ×´ï·¶Î§
+%åˆ›å»º robotics.LidarSLAM å¹¶è®¾ç½®åœ°å›¾åˆ†è¾¨ç‡å’Œæœ€å¤§æ¿€å…‰é›·è¾¾èŒƒå›´
 maxLidarRange = 8;
 mapResolution = 20;
 slamAlg = robotics.LidarSLAM(mapResolution, maxLidarRange);
 
-%ÉèÖÃÑ­»·±Õ°ü²ÎÊı
+%è®¾ç½®å¾ªç¯é—­åŒ…å‚æ•°
 slamAlg.LoopClosureThreshold = 210;  
 slamAlg.LoopClosureSearchRadius = 8;
 
-%¹¹½¨µØÍ¼
-for i=10:length(scans)
+%æ„å»ºåœ°å›¾
+for i=1:length(scans)
     [isScanAccepted, loopClosureInfo, optimizationInfo] = addScan(slamAlg, scans{i});
     if ~isScanAccepted
         continue;
@@ -27,7 +27,7 @@ for i=10:length(scans)
     end
 end
 
-%¹¹½¨Õ¼ÓĞÂÊµØÍ¼
+%æ„å»ºå æœ‰ç‡åœ°å›¾
 [scans, optimizedPoses]  = scansAndPoses(slamAlg);
 map = buildMap(scans, optimizedPoses, mapResolution, maxLidarRange);
 figure; 
