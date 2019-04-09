@@ -21,7 +21,7 @@ Usage
 
 3. ROS_CONTROL_APP
 
-![MATLAB_ROS_APP](https://github.com/lei01cao/MROBOT/blob/master/img/matlab-ros.png)
+![MATLAB_ROS_APP](https://github.com/lei01cao/MROBOT/blob/master/img/MATLAB_ROS_APP.png)
 
 To Do
 
