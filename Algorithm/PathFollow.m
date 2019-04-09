@@ -1,4 +1,4 @@
-%clc; clear all;
+clc; clear all;
 % path = [0  0;
 %         3  0; 
 %         4 -3;

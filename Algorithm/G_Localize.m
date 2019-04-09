@@ -32,13 +32,9 @@ while i < numUpdates
     % sensor readings.
     [isUpdated,estimatedPose, estimatedCovariance] = amcl(pose, scan);
     
-    % Drive robot to next pose.
-    %wander(wanderHelper);
-    
     % Plot the robot's estimated pose, particles and laser scans on the map.
     if isUpdated
         i = i + 1;
-        %plotStep(visualizationHelper, amcl, estimatedPose, scan, i)
     end
     
 end
