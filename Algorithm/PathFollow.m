@@ -3,6 +3,16 @@
 %         3  0; 
 %         4 -3;
 %         -4 -4];
+
+% findpath
+% mapInflated = copy(robot.Map);
+% inflate(mapInflated,robotRadius);
+% prm = robotics.PRM(mapInflated);
+% prm.NumNodes = 100;
+% prm.ConnectionDistance = 10;
+% startLocation = [0 0]; 
+% endLocation = [5 -5];
+% path = findpath(prm, startLocation, endLocation);
 path = [0  0;
         3  0;
         5  -2;
