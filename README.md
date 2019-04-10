@@ -40,7 +40,7 @@ To Do
 
 References 
 
-1.ROS机器人开发实践 胡春旭 
+1.ROS WIKI 
 
 2.Robotic System Toolbox Matlab2018b
 
