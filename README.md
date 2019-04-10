@@ -36,7 +36,7 @@ To Do
 	![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm.png)
 4. ObstacleAvoidance
 
-	![VFH]()
+	![VFH](https://github.com/lei01cao/MROBOT/blob/master/img/vfh.png)
 
 References 
 
