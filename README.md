@@ -27,7 +27,7 @@ To Do
 
 1. Mapping
 
-	![MAPPING]()
+	![MAPPING](https://github.com/lei01cao/MROBOT/blob/master/img/mapping.png)
 2. AMCL_Localize
 
 	![AMCL](https://github.com/lei01cao/MROBOT/blob/master/img/AMCL.png)
