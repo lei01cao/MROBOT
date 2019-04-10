@@ -33,7 +33,7 @@ To Do
 	![AMCL](https://github.com/lei01cao/MROBOT/blob/master/img/AMCL.png)
 3. Path_follow
 
-	![PRM]()
+	![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm.png)
 4. ObstacleAvoidance
 
 	![VFH]()
