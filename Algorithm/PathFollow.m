@@ -3,26 +3,24 @@ clc; clear all;
 %         3  0; 
 %         4 -3;
 %         -4 -4];
+% path = [0  0;
+%         3  0;
+%         5  -2;
+%         5  -5;
+%         -5 -5;
+%         -5 0;
+%         0 -1];  
 
 % findpath
-% mapInflated = copy(robot.Map);
-% inflate(mapInflated,robotRadius);
-% prm = robotics.PRM(mapInflated);
-% prm.NumNodes = 100;
-% prm.ConnectionDistance = 10;
-% startLocation = [0 0]; 
-% endLocation = [5 -5];
-% path = findpath(prm, startLocation, endLocation);
-path = [0  0;
-        3  0;
-        5  -2;
-        5  -5;
-        -5 -5;
-        -5 0;
-        0 -1];  
+startLocation = [0 0]; 
+endLocation = [5 -5];
+prmSimple = robotics.PRM(myOccMap,50)
+path = findpath(prm, startLocation, endLocation);
 global laserSub; 
 global odomSub;
 global amcl;
+
+%reset gazebo
 client = rossvcclient('/gazebo/reset_world');
 call(client);
 %导入构建完成的全局栅格地图
