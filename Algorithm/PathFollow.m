@@ -11,21 +11,24 @@ clc; clear all;
 %         -5 -5;
 %         -5 0;
 %         0 -1];  
+%reset gazebo
+client = rossvcclient('/gazebo/reset_world');
+call(client);
+
+%导入构建完成的全局栅格地图
+load map\map_mrobot_gazebo_laser_nav.mat;
 
 % findpath
 startLocation = [0 0]; 
 endLocation = [5 -5];
 prmSimple = robotics.PRM(myOccMap,50)
-path = findpath(prm, startLocation, endLocation);
+path = findpath(prmSimple, startLocation, endLocation);
 global laserSub; 
 global odomSub;
 global amcl;
 
-%reset gazebo
-client = rossvcclient('/gazebo/reset_world');
-call(client);
-%导入构建完成的全局栅格地图
-load map\map_mrobot_gazebo_laser_nav.mat;
+
+
 
 %建立激光传感器模型和差速机器人运动模型
 odometryModel = robotics.OdometryMotionModel;
@@ -131,8 +134,9 @@ while(distanceToGoal > goalRadius)
     % Assign and send velocity commands
     velMsg.Linear.X = desiredV;
     velMsg.Angular.Z = w;
-    velPub.send(velMsg);
-
+    %velPub.send(velMsg);
+    send(robot,velMsg);
+    
 	%drive(robot, v, omega);
     %velMsg.Linear.X = v;
     %velMsg.Angular.Z = omega;
