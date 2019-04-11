@@ -1,4 +1,5 @@
 clc; clear all;
+%rosinit
 % path = [0  0;
 %         3  0; 
 %         4 -3;
@@ -82,7 +83,6 @@ amcl.InitialPose = TruePose;%机器人真实坐标
 %amcl.InitialPose = [0 0 0];%机器人真实坐标
 amcl.InitialCovariance = eye(3)*0.5;
 
-%rosinit;
 robotCurrentLocation = path(1,:); %机器人初始位置
 robotGoal = path(end,:);		%机器人目标位置
 initialOrientation = 0;			%初始姿态角
