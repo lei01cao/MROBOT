@@ -1,9 +1,7 @@
 clc; clear all;
 %rosinit
-% path = [0  0;
-%         3  0; 
-%         4 -3;
-%         -4 -4];
+path = [0  0;
+        5  0];
 % path = [0  0;
 %         3  0;
 %         5  -2;
@@ -21,12 +19,12 @@ load map\map_mrobot_gazebo_laser_nav.mat;
 % findpath
 startLocation = [0 0]; 
 endLocation = [5 -5];
-prmSimple = robotics.PRM(myOccMap,50)
-path = findpath(prmSimple, startLocation, endLocation);
+% prmSimple = robotics.PRM(myOccMap,50)
+% path = findpath(prmSimple, startLocation, endLocation);
 global laserSub; 
 global odomSub;
 global amcl;
-
+%global ObstacleAvoidance = 0;
 
 
 
@@ -59,14 +57,14 @@ rangeFinderModel.SensorPose = ...
 %laserSub = rossubscriber('/scan');
 odomSub = rossubscriber('/odom');
 
-%ObstacleAvoidance
+%ObstacleAvoidance初始化
 vfh = robotics.VectorFieldHistogram;
 vfh.DistanceLimits = [0.05 1];
 vfh.RobotRadius = 0.1;
 vfh.MinTurningRadius = 0.2;
 vfh.SafetyDistance = 0.1;
 
-targetDir = 0; %目标方向设置为0
+%targetDir = 0; %目标方向设置为0
 
 %初始化AMCL对象
 amcl = robotics.MonteCarloLocalization;
@@ -116,27 +114,25 @@ while(distanceToGoal > goalRadius)
     % Get laser scan data
     laserScan = receive(laserSub);
     ranges = double(laserScan.Ranges);
-    angles = double(laserScan.readScanAngles)   
+    angles = double(laserScan.readScanAngles);  
 
     % Call VFH object to computer steering direction
-    steerDir = vfh(ranges, angles, targetDir);    
+    steerDir = vfh(ranges, angles, omega);    
         % Calculate velocities
     if ~isnan(steerDir) % If steering direction is valid
         %desiredV = 0.2;
-        desiredV = v;
-        %w = ComputeAngularVelocity(steerDir, 1);
-        w = omega;
+        desiredV = 0.2;
+        w = ComputeAngularVelocity(steerDir, 1);
+        %w = omega;
     else % Stop and search for valid direction
         desiredV = 0.0;
         w = 0.5;
     end
-
     % Assign and send velocity commands
-    velMsg.Linear.X = desiredV;
-    velMsg.Angular.Z = w;
-    %velPub.send(velMsg);
-    send(robot,velMsg);
-    
+        velMsg.Linear.X = v;
+        velMsg.Angular.Z = w;
+        %velPub.send(velMsg);
+        send(robot,velMsg); 
 	%drive(robot, v, omega);
     %velMsg.Linear.X = v;
     %velMsg.Angular.Z = omega;
