@@ -11,7 +11,7 @@ global amcl;
 %Localization Procedure
 numUpdates = 60;
 i = 0;
-while i < numUpdates
+    while i < numUpdates
     % Receive laser scan and odometry message.
     scanMsg = receive(laserSub);
     odompose = odomSub.LatestMessage;
@@ -36,7 +36,7 @@ while i < numUpdates
     if isUpdated
         i = i + 1;
     end
-    
+    %[isUpdated,estimatedPose, estimatedCovariance] = amcl(pose, scan);
 end
     
     

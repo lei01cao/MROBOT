@@ -119,8 +119,10 @@ while(distanceToGoal > goalRadius)
     steerDir = vfh(ranges, angles, targetDir);    
         % Calculate velocities
     if ~isnan(steerDir) % If steering direction is valid
-        desiredV = 0.2;
-        w = ComputeAngularVelocity(steerDir, 1);
+        %desiredV = 0.2;
+        desiredV = v;
+        %w = ComputeAngularVelocity(steerDir, 1);
+        w = omega;
     else % Stop and search for valid direction
         desiredV = 0.0;
         w = 0.5;
@@ -132,9 +134,9 @@ while(distanceToGoal > goalRadius)
     velPub.send(velMsg);
 
 	%drive(robot, v, omega);
-    velMsg.Linear.X = v;
-    velMsg.Angular.Z = omega;
-    send(robot,velMsg);
+    %velMsg.Linear.X = v;
+    %velMsg.Angular.Z = omega;
+    %send(robot,velMsg);
     %rospublisher('cmd_vel', 'IsLatching', true);   
 	%robotCurrentPose = robot.getRobotPose;
     robotCurrentPose = TruePose();%定位实时位置
