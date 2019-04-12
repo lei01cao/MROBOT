@@ -1,7 +1,10 @@
 clc; clear all;
 %rosinit
 path = [0  0;
-        5  0];
+        5  0;
+        5  -3;
+        5 -5;
+        0 -5];
 % path = [0  0;
 %         3  0;
 %         5  -2;
@@ -18,8 +21,8 @@ load map\map_mrobot_gazebo_laser_nav.mat;
 
 % findpath
 startLocation = [0 0]; 
-endLocation = [5 -5];
-% prmSimple = robotics.PRM(myOccMap,50)
+endLocation = [0 -5];
+% prmSimple = robotics.PRM(myOccMap,500)
 % path = findpath(prmSimple, startLocation, endLocation);
 global laserSub; 
 global odomSub;
@@ -131,7 +134,7 @@ while(distanceToGoal > goalRadius)
     end
     if steerDir ~= 0
         ObstacleAvoidance = 1;
-    else
+    elseif steerDir == 0
         ObstacleAvoidance = 0;
     end
     % Assign and send velocity commands
@@ -146,9 +149,9 @@ while(distanceToGoal > goalRadius)
          send(robot,velMsg); 
     end
 	%drive(robot, v, omega);
-    %velMsg.Linear.X = v;
-    %velMsg.Angular.Z = omega;
-    %send(robot,velMsg);
+%     velMsg.Linear.X = v;
+%     velMsg.Angular.Z = omega;
+%     send(robot,velMsg);
     %rospublisher('cmd_vel', 'IsLatching', true);   
 	%robotCurrentPose = robot.getRobotPose;
     robotCurrentPose = TruePose();%定位实时位置
