@@ -28,7 +28,7 @@ while rate.TotalElapsedTime < 30
 	% Calculate velocities
 	if ~isnan(steerDir) % If steering direction is valid
 		desiredV = 0.2;
-		w = exampleHelperComputeAngularVelocity(steerDir, 1);
+		w = ComputeAngularVelocity(steerDir, 1);
 	else % Stop and search for valid direction
 		desiredV = 0.0;
 		w = 0.5;
