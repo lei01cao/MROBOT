@@ -1,10 +1,10 @@
 clc; clear all;
 %rosinit
-path = [0  0;
-        5  0;
-        5  -3;
-        5 -5;
-        0 -5];
+% path = [0  0;
+%         5  0;
+%         5  -3;
+%         5 -5;
+%         0 -5];
 % path = [0  0;
 %         3  0;
 %         5  -2;
@@ -22,8 +22,8 @@ load map\map_mrobot_gazebo_laser_nav.mat;
 % findpath
 startLocation = [0 0]; 
 endLocation = [0 -5];
-% prmSimple = robotics.PRM(myOccMap,500)
-% path = findpath(prmSimple, startLocation, endLocation);
+prmSimple = robotics.PRM(myOccMap,500)
+path = findpath(prmSimple, startLocation, endLocation);
 global laserSub; 
 global odomSub;
 global amcl;
