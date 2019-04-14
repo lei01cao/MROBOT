@@ -16,7 +16,7 @@ clc; clear all;
 client = rossvcclient('/gazebo/reset_world');
 call(client);
 
-%µº»ÎππΩ®ÕÍ≥…µƒ»´æ÷’§∏ÒµÿÕº
+%ÂØºÂÖ•ÊûÑÂª∫ÂÆåÊàêÁöÑÂÖ®Â±ÄÊ†ÖÊ†ºÂú∞Âõæ
 load map\map_mrobot_gazebo_laser_nav.mat;
 
 % findpath
@@ -31,7 +31,7 @@ global ObstacleAvoidance;
 
 
 
-%Ω®¡¢º§π‚¥´∏–∆˜ƒ£–Õ∫Õ≤ÓÀŸª˙∆˜»À‘À∂Øƒ£–Õ
+%Âª∫Á´ãÊøÄÂÖâ‰º†ÊÑüÂô®Ê®°ÂûãÂíåÂ∑ÆÈÄüÊú∫Âô®‰∫∫ËøêÂä®Ê®°Âûã
 odometryModel = robotics.OdometryMotionModel;
 odometryModel.Noise = [0.2 0.2 0.2 0.2];
 rangeFinderModel = robotics.LikelihoodFieldSensorModel;
@@ -56,40 +56,40 @@ laserRotation = quat2eul(laserQuat, 'ZYX');
 rangeFinderModel.SensorPose = ...
     [sensorTransform.Transform.Translation.X sensorTransform.Transform.Translation.Y laserRotation(1)];
 
-%∂©‘ƒ¥´∏–∆˜÷˜Ã‚
+%ËÆ¢ÈòÖ‰º†ÊÑüÂô®‰∏ªÈ¢ò
 %laserSub = rossubscriber('/scan');
 odomSub = rossubscriber('/odom');
 
-%ObstacleAvoidance≥ı ºªØ
+%ObstacleAvoidanceÂàùÂßãÂåñ
 vfh = robotics.VectorFieldHistogram;
 vfh.DistanceLimits = [0.05 1];
 vfh.RobotRadius = 0.1;
 vfh.MinTurningRadius = 0.2;
 vfh.SafetyDistance = 0.1;
 vfh.HistogramThresholds = [0.1 1];
-targetDir = 0; %ƒø±Í∑ΩœÚ…Ë÷√Œ™0
+targetDir = 0; %ÁõÆÊ†áÊñπÂêëËÆæÁΩÆ‰∏∫0
 
-%≥ı ºªØAMCL∂‘œÛ
+%ÂàùÂßãÂåñAMCLÂØπË±°
 amcl = robotics.MonteCarloLocalization;
 amcl.UseLidarScan = true;
 amcl.MotionModel = odometryModel;
 amcl.SensorModel = rangeFinderModel;
-%amcl.UpdateThresholds = [0.2,0.2,0.2]; %∏¸–¬„–÷µ
-amcl.UpdateThresholds = [0.2,0.2,0.2];  %∏¸–¬„–÷µ
-%amcl.ResamplingInterval = 1;           %÷ÿ∏¥≤…—˘º‰∏Ù
-amcl.ResamplingInterval = 1;           %÷ÿ∏¥≤…—˘º‰∏Ù
+%amcl.UpdateThresholds = [0.2,0.2,0.2]; %Êõ¥Êñ∞ÈòàÂÄº
+amcl.UpdateThresholds = [0.2,0.2,0.2];  %Êõ¥Êñ∞ÈòàÂÄº
+%amcl.ResamplingInterval = 1;           %ÈáçÂ§çÈááÊ†∑Èó¥Èöî
+amcl.ResamplingInterval = 1;           %ÈáçÂ§çÈááÊ†∑Èó¥Èöî
 
-% π”√≥ı º◊ÀÃ¨‘§π¿≈‰÷√AMCLΩ¯––∂®Œª
-%amcl.ParticleLimits = [500 5000];%¡£◊” ˝¡øœ¬œﬁ∫Õ…œœﬁ
+%‰ΩøÁî®ÂàùÂßãÂßøÊÄÅÈ¢Ñ‰º∞ÈÖçÁΩÆAMCLËøõË°åÂÆö‰Ωç
+%amcl.ParticleLimits = [500 5000];%Á≤íÂ≠êÊï∞Èáè‰∏ãÈôêÂíå‰∏äÈôê
 amcl.ParticleLimits = [50 100];
-amcl.GlobalLocalization = false; %»´æ÷∂®Œª πƒ‹
-amcl.InitialPose = TruePose;%ª˙∆˜»À’Ê µ◊¯±Í
-%amcl.InitialPose = [0 0 0];%ª˙∆˜»À’Ê µ◊¯±Í
+amcl.GlobalLocalization = false; %ÂÖ®Â±ÄÂÆö‰Ωç‰ΩøËÉΩ
+amcl.InitialPose = TruePose;%Êú∫Âô®‰∫∫ÁúüÂÆûÂùêÊ†á
+%amcl.InitialPose = [0 0 0];%Êú∫Âô®‰∫∫ÁúüÂÆûÂùêÊ†á
 amcl.InitialCovariance = eye(3)*0.5;
 
-robotCurrentLocation = path(1,:); %ª˙∆˜»À≥ı ºŒª÷√
-robotGoal = path(end,:);		%ª˙∆˜»Àƒø±ÍŒª÷√
-initialOrientation = 0;			%≥ı º◊ÀÃ¨Ω«
+robotCurrentLocation = path(1,:); %Êú∫Âô®‰∫∫ÂàùÂßã‰ΩçÁΩÆ
+robotGoal = path(end,:);		%Êú∫Âô®‰∫∫ÁõÆÊ†á‰ΩçÁΩÆ
+initialOrientation = 0;			%ÂàùÂßãÂßøÊÄÅËßí
 robotCurrentPose = [robotCurrentLocation initialOrientation];
 laserSub = rossubscriber('/scan');  
 %[velPub, velMsg] = rospublisher('/cmd_vel');
@@ -112,7 +112,7 @@ distanceToGoal = norm(robotCurrentLocation - robotGoal);
 controlRate = robotics.Rate(20);
 ObstacleAvoidance = 0;
 while(distanceToGoal > goalRadius)   
-	[v, omega] = controller(robotCurrentPose);
+    [v, omega] = controller(robotCurrentPose);
     disp([v,omega]);
 
     % Get laser scan data
@@ -154,10 +154,11 @@ while(distanceToGoal > goalRadius)
 %     send(robot,velMsg);
     %rospublisher('cmd_vel', 'IsLatching', true);   
 	%robotCurrentPose = robot.getRobotPose;
-    robotCurrentPose = TruePose();%∂®Œª µ ±Œª÷√
+    robotCurrentPose = TruePose();%ÂÆö‰ΩçÂÆûÊó∂‰ΩçÁΩÆ
+    %robotCurrentPose = G_Localize();%AMCL
     disp(robotCurrentPose);
-	distanceToGoal = norm(robotCurrentPose(1:2) - robotGoal);
-	waitfor(controlRate);
+    distanceToGoal = norm(robotCurrentPose(1:2) - robotGoal);
+    waitfor(controlRate);
 end
 velMsg.Linear.X = 0;
 velMsg.Angular.Z = 0;
