@@ -30,7 +30,11 @@ To Do
 	![MAPPING](https://github.com/lei01cao/MROBOT/blob/master/img/mapping.png)
 2. AMCL_Localize
 
-	![AMCL](https://github.com/lei01cao/MROBOT/blob/master/img/AMCL.png)
+	<center class="half">
+    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/AMCL-12.png" title="AMCL-12" height="350" width="400">
+    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/AMCL-30.png" title="AMCL-30" height="350" width="400">
+	</center>
+	<!-- ![AMCL](https://github.com/lei01cao/MROBOT/blob/master/img/AMCL.png) -->
 3. Path_follow
 
 	<center class="half">
