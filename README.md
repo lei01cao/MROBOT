@@ -31,11 +31,8 @@ To Do
 2. AMCL_Localize
 	![AMCL](https://github.com/lei01cao/MROBOT/blob/master/img/AMCL.png)
 3. Path_follow
-	<figure class="half">
-    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-500.png">
-    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-5000.png">
-	</figure>
-	#![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm.png)
+	![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm-500.png)
+	![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm-5000.png)
 4. ObstacleAvoidance
 
 	![VFH](https://github.com/lei01cao/MROBOT/blob/master/img/vfh.png)
