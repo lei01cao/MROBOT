@@ -1,2 +1,2 @@
 learning_communication:learning_tf:mrobot_description:mrobot_gazebo
--DCATKIN_DEVEL_PREFIX=/home/lei/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lei/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/lei/workspace/ROBOT-BOB/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lei/workspace/ROBOT-BOB/catkin_ws/install -G Unix Makefiles
