@@ -34,8 +34,8 @@ To Do
 3. Path_follow
 
 	<center class="half">
-    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-500.png" title="PRM-500" height="350" width="500">
-    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-5000.png" title="PRM-5000" height="350" width="500">
+    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-500.png" title="PRM-500" height="350" width="450">
+    <img src="https://github.com/lei01cao/MROBOT/blob/master/img/prm-5000.png" title="PRM-5000" height="350" width="450">
 	</center>
 	<!-- ![PRM](https://github.com/lei01cao/MROBOT/blob/master/img/prm.png) -->
 4. ObstacleAvoidance
